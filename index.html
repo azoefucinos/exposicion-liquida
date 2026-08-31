@@ -1,0 +1,1345 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>La sociedad se volvió líquida — Exposición sobre el consumo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400;1,9..144,500;1,9..144,600&display=swap" rel="stylesheet">
+<style>
+/* ============ BASE ============ */
+:root{
+  --paper:#F5F0E5; --paper2:#EBE5D4; --ink:#1D1810; --soft:#57503F;
+  --line:#CFC6B0; --accent:#BC3A1B; --accentL:#E0593A; --teal:#2F4F45;
+  --night:#181309; --cream:#F3EDDD; --cream-dim:#B9B19D;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  background:var(--paper); color:var(--ink);
+  font-family:'Archivo',sans-serif; font-size:17px; line-height:1.7;
+  font-optical-sizing:auto; -webkit-font-smoothing:antialiased;
+}
+body::after{ /* grano de papel */
+  content:""; position:fixed; inset:0; z-index:999; pointer-events:none; opacity:.05;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='140' height='140'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2'/></filter><rect width='140' height='140' filter='url(%23n)' opacity='0.6'/></svg>");
+}
+.wrap{max-width:1080px;margin:0 auto;padding:0 26px}
+a{color:inherit}
+::selection{background:var(--accent);color:var(--paper)}
+section[id]{scroll-margin-top:72px}
+h1,h2,h3{font-family:'Fraunces',serif;font-weight:600;line-height:1.05}
+img,svg{display:block}
+
+/* ============ READBAR + NAV ============ */
+.readbar{position:fixed;top:0;left:0;right:0;height:3px;background:var(--accent);transform:scaleX(0);transform-origin:0 0;z-index:1200}
+.topnav{
+  position:fixed;top:0;left:0;right:0;height:62px;z-index:1100;
+  display:flex;align-items:center;justify-content:space-between;gap:18px;
+  padding:0 26px;border-bottom:1px solid var(--line);
+  background:rgba(245,240,229,.92);backdrop-filter:blur(8px);
+}
+.brand{display:flex;align-items:center;gap:12px;text-decoration:none}
+.brand-mark{font:700 13px/1 'Archivo';letter-spacing:.06em;border:2px solid var(--ink);padding:5px 8px;white-space:nowrap}
+.brand-text{font:600 14px/1.2 'Archivo';letter-spacing:.01em}
+.nav-links{display:flex;gap:26px}
+.nav-links a{text-decoration:none;font:600 13px/1 'Archivo';letter-spacing:.08em;text-transform:uppercase;color:var(--soft);padding:6px 0;border-bottom:2px solid transparent;transition:.2s}
+.nav-links a:hover{color:var(--ink)}
+.nav-links a.active{color:var(--ink);border-bottom-color:var(--accent)}
+.nav-cta{
+  text-decoration:none;font:700 13px/1 'Archivo';letter-spacing:.05em;
+  background:var(--ink);color:var(--paper);padding:11px 18px;white-space:nowrap;transition:.2s;
+}
+.nav-cta:hover{background:var(--accent);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+
+/* ============ HERO ============ */
+.hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;position:relative;padding:120px 0 60px;overflow:hidden}
+.hero .kicker{margin-bottom:34px}
+.hero-title{font-weight:400}
+.hero-title .hl{display:block}
+.hl-1{font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.9rem,5.5vw,4rem);padding-left:clamp(0px,6vw,90px);animation:rise .7s .1s both}
+.hl-2{margin:10px 0 4px;animation:rise .7s .25s both}
+.solid{
+  display:inline-block;font-family:'Archivo';font-weight:800;text-transform:uppercase;
+  font-size:clamp(2.4rem,8vw,6.2rem);line-height:1;letter-spacing:.01em;
+  border:3px solid var(--ink);padding:.08em .22em .06em;box-shadow:9px 9px 0 var(--teal);
+  transition:.2s;
+}
+.solid:hover{transform:translate(3px,3px);box-shadow:6px 6px 0 var(--teal)}
+.hl-3{font-family:'Fraunces';font-style:italic;font-weight:300;font-size:clamp(1.3rem,3vw,2rem);color:var(--soft);padding-left:clamp(0px,22vw,330px);animation:rise .7s .4s both}
+.hl-4{font-family:'Fraunces';font-style:italic;font-weight:300;font-size:clamp(3.2rem,12.5vw,9rem);line-height:.95;letter-spacing:-.02em;animation:rise .8s .55s both}
+.hl-4 .dot{color:var(--accent);font-style:normal}
+@keyframes rise{from{opacity:0;transform:translateY(26px)}to{opacity:1;transform:none}}
+.hero-sub{max-width:46ch;font-size:clamp(1rem,1.6vw,1.15rem);color:var(--soft);margin:34px 0 0;animation:rise .7s .75s both}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;margin-top:38px;animation:rise .7s .9s both}
+.hero-meta .m{font:700 12px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.hero-meta .sep{width:26px;height:2px;background:var(--accent)}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;margin-top:34px;animation:rise .7s 1s both}
+.stamp{position:absolute;right:clamp(20px,6vw,90px);bottom:110px;width:150px;height:150px;animation:spin 28s linear infinite;opacity:.9}
+.stamp text{font:600 12px 'Archivo';letter-spacing:2.4px;fill:var(--ink)}
+.stamp .star{font-family:'Fraunces';font-style:italic;font-size:58px;fill:var(--accent)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.scroll-cue{position:absolute;left:26px;bottom:26px;display:flex;align-items:center;gap:10px;font:600 11px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase;color:var(--soft);text-decoration:none}
+.scroll-cue svg{animation:bob 1.8s ease-in-out infinite}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+
+/* botones */
+.btn{display:inline-flex;align-items:center;gap:10px;border:2px solid var(--ink);background:var(--ink);color:var(--paper);padding:14px 24px;font:700 14px/1 'Archivo';letter-spacing:.04em;text-decoration:none;cursor:pointer;transition:.18s}
+.btn:hover{background:var(--accent);border-color:var(--accent);transform:translate(-2px,-2px);box-shadow:4px 4px 0 var(--ink)}
+.btn.ghost{background:transparent;color:var(--ink)}
+.btn.ghost:hover{background:var(--ink);color:var(--paper)}
+.btn svg{width:16px;height:16px}
+
+/* kicker */
+.kicker{display:flex;align-items:center;gap:12px;font:700 11.5px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase;color:var(--accent)}
+.kicker::before{content:"";width:34px;height:2px;background:var(--accent);flex:none}
+
+/* ============ TOC ============ */
+.toc{padding:70px 0 90px;border-top:1px solid var(--line)}
+.toc-title{font-size:clamp(1.8rem,3.5vw,2.6rem);margin:14px 0 30px}
+.toc-list{list-style:none;columns:2;column-gap:56px}
+.toc-list li{break-inside:avoid;border-top:1px solid var(--line)}
+.toc-list a{display:grid;grid-template-columns:44px 1fr auto;align-items:baseline;gap:12px;padding:11px 4px;text-decoration:none;transition:.15s}
+.toc-list a:hover{transform:translateX(5px);background:var(--paper2)}
+.toc-n{font-family:'Fraunces';font-style:italic;font-weight:400;color:var(--accent);font-size:15px}
+.toc-t{font-weight:600;font-size:15.5px}
+.toc-a{font-size:12px;color:var(--soft);letter-spacing:.04em;text-transform:uppercase}
+.toc-list li.hot{border-top:2px solid var(--accent)}
+.toc-list li.hot .toc-n{color:var(--ink)}
+
+/* ============ SECCIONES ============ */
+.sec{padding:100px 0 110px;border-top:1px solid var(--line)}
+.sec-inner{display:grid;grid-template-columns:180px 1fr;gap:44px;position:relative}
+.sec--flip .sec-inner{grid-template-columns:1fr 180px}
+.sec--flip .sec-num{order:2;text-align:right}
+.sec-num{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:clamp(3.6rem,7vw,6.4rem);line-height:.9;color:transparent;-webkit-text-stroke:1.5px var(--ink);user-select:none}
+.sec h2{font-size:clamp(2rem,4.2vw,3.2rem);letter-spacing:-.015em;margin:16px 0 20px;max-width:18ch}
+.lead{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:clamp(1.12rem,2vw,1.38rem);line-height:1.55;color:var(--soft);max-width:52ch;margin-bottom:26px}
+.sec-body p{max-width:64ch;margin-bottom:18px}
+.note{float:right;width:290px;margin:6px 0 22px 38px;background:var(--paper2);border:2px solid var(--ink);padding:18px 20px 16px;box-shadow:7px 7px 0 rgba(28,23,16,.12)}
+.sec--flip .note{float:left;margin:6px 38px 22px 0}
+.note .n-label{display:flex;align-items:center;gap:8px;font:700 10.5px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin-bottom:10px}
+.note .n-label svg{width:13px;height:13px}
+.note p{font-size:14.5px;line-height:1.6;margin:0}
+.reveal{opacity:0;transform:translateY(20px);transition:opacity .7s ease,transform .7s ease}
+.reveal.in{opacity:1;transform:none}
+
+/* ============ COMPARADOR §01 ============ */
+.comparator{margin-top:46px;border:2px solid var(--ink);background:var(--paper)}
+.comp-head{display:flex;flex-wrap:wrap;align-items:center;gap:14px 22px;padding:18px 22px;border-bottom:2px solid var(--ink)}
+.comp-title{font-family:'Fraunces';font-style:italic;font-weight:500;font-size:1.25rem}
+.comp-switch{display:flex;flex:1;justify-content:flex-end;gap:0}
+.comp-btn{font:700 12px/1 'Archivo';letter-spacing:.1em;text-transform:uppercase;padding:12px 18px;border:2px solid var(--ink);background:transparent;color:var(--ink);cursor:pointer;transition:.2s}
+.comp-btn + .comp-btn{margin-left:-2px}
+.comp-btn.is-active{background:var(--ink);color:var(--paper)}
+.comp-btn.is-active[data-mode-btn="solid"]{background:var(--teal);border-color:var(--teal)}
+.comp-btn.is-active[data-mode-btn="liquid"]{background:var(--accent);border-color:var(--accent)}
+.comp-hint{width:100%;font-size:12.5px;color:var(--soft)}
+.comp-row{display:grid;grid-template-columns:120px 1fr 1fr;border-top:1px solid var(--line)}
+.comp-row:first-child{border-top:0}
+.comp-row > span{padding:13px 16px;font-size:15px}
+.r-label{font:700 11px/1.4 'Archivo';letter-spacing:.14em;text-transform:uppercase;color:var(--soft);align-self:center}
+.comp-row.head span{font:700 12px/1 'Archivo';letter-spacing:.12em;text-transform:uppercase}
+.comp-row.head .c-solid{color:var(--teal)}
+.comp-row.head .c-liquid{color:var(--accent)}
+.c-solid,.c-liquid{transition:opacity .35s,filter .35s}
+.comparator[data-mode="solid"] .c-liquid{opacity:.25;filter:grayscale(.5)}
+.comparator[data-mode="liquid"] .c-solid{opacity:.25;filter:grayscale(.5)}
+.comp-symbol{border-top:2px solid var(--ink);padding:20px 22px;display:grid;grid-template-columns:130px 1fr;gap:14px;align-items:center}
+.sym-label{font:700 11px/1.4 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.sym{display:none;font-family:'Fraunces';font-style:italic;font-weight:500;font-size:clamp(1.15rem,2.4vw,1.55rem);padding:10px 16px;border-left:5px solid}
+.comparator[data-mode="solid"] .sym.solid{display:block;border-color:var(--teal)}
+.comparator[data-mode="liquid"] .sym.liquid{display:block;border-color:var(--accent)}
+
+/* ============ CHART DURABILIDAD §02 ============ */
+.dur{margin-top:46px;border:2px solid var(--ink);background:var(--paper);padding:24px}
+.dur-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 18px;margin-bottom:6px}
+.dur-head h3{font-size:1.35rem;font-style:italic;font-weight:500}
+.dur-hint{font-size:12.5px;color:var(--soft)}
+.dur-legend{display:flex;gap:24px;flex-wrap:wrap;margin:10px 0 20px}
+.dur-legend span{display:flex;align-items:center;gap:8px;font:600 11px/1 'Archivo';letter-spacing:.12em;text-transform:uppercase;color:var(--soft)}
+.lg{width:14px;height:14px;flex:none}
+.lg.old{background:var(--teal)} .lg.new{background:var(--accent)}
+.dur-row{display:grid;grid-template-columns:190px 1fr 84px;gap:8px 16px;align-items:center;width:100%;text-align:left;background:none;border:0;border-top:1px solid var(--line);padding:10px 4px;cursor:pointer;font-family:inherit;color:inherit}
+.dur-row:hover .dur-name{color:var(--accent)}
+.dur-name{font-weight:600;font-size:15px;transition:.15s}
+.dur-track{background:var(--paper2);height:24px;position:relative}
+.dur-bar{position:absolute;inset:0 auto 0 0;height:100%;min-width:3.5%}
+.dur-row.old .dur-bar{background:var(--teal)}
+.dur-row.new .dur-bar{background:var(--accent)}
+.dur-val{font:700 13px/1 'Archivo';letter-spacing:.02em;text-align:right;color:var(--soft)}
+.dur-note{grid-column:2/-1;max-height:0;overflow:hidden;transition:max-height .4s ease;font-size:14.5px;color:var(--soft)}
+.dur-note span{display:flex;gap:8px;padding:4px 0 8px}
+.dur-note svg{width:15px;height:15px;flex:none;margin-top:4px;color:var(--accent)}
+.dur-row.open .dur-note{max-height:130px}
+.dur-foot{border-top:1px solid var(--line);margin-top:8px;padding-top:10px;font-size:12px;color:var(--soft);font-style:italic}
+
+/* ============ JUEGO BATAILLE §04 ============ */
+.game{margin-top:46px;border:2px solid var(--ink);background:var(--paper);padding:24px}
+.game-head h3{font-style:italic;font-weight:500;font-size:1.35rem}
+.game-head p{font-size:14px;color:var(--soft);margin:4px 0 18px}
+.game-item{border-top:1px solid var(--line);padding:16px 0}
+.g-q{font-weight:600;font-size:16px;margin-bottom:12px}
+.g-btns{display:flex;gap:10px;flex-wrap:wrap}
+.g-btns button{font:700 12px/1 'Archivo';letter-spacing:.08em;text-transform:uppercase;padding:11px 16px;border:2px solid var(--ink);background:transparent;cursor:pointer;transition:.15s}
+.g-btns button:hover{background:var(--paper2)}
+.game-item.done .g-btns button{cursor:default;opacity:.5}
+.game-item.done .g-btns button.picked,.game-item.done .g-btns button.was-right{opacity:1}
+.game-item.right .g-btns button.picked{background:var(--teal);border-color:var(--teal);color:var(--paper)}
+.game-item.wrong .g-btns button.picked{background:var(--accent);border-color:var(--accent);color:var(--paper)}
+.game-item.done .g-btns button.was-right{border-color:var(--teal);color:var(--teal)}
+.g-note{display:none;margin-top:12px;font-size:14.5px;color:var(--soft);align-items:flex-start;gap:8px}
+.game-item.done .g-note{display:flex}
+.g-note svg{width:15px;height:15px;flex:none;margin-top:4px}
+.game-item.right .g-note svg{color:var(--teal)}
+.game-item.wrong .g-note svg{color:var(--accent)}
+.game-item.right .g-note strong{color:var(--teal)}
+.game-item.wrong .g-note strong{color:var(--accent)}
+.game-reset{margin-top:18px;display:inline-flex;align-items:center;gap:8px;font:700 12px/1 'Archivo';letter-spacing:.08em;text-transform:uppercase;border:0;background:none;cursor:pointer;color:var(--soft);padding:6px 2px;border-bottom:2px solid var(--line)}
+.game-reset:hover{color:var(--accent);border-bottom-color:var(--accent)}
+.game-reset svg{width:14px;height:14px}
+
+/* ============ DEMO McLUHAN §09 ============ */
+.media-demo{margin-top:46px}
+.demo-cap{font:700 11.5px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase;color:var(--accent);margin-bottom:16px}
+.demo-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px;align-items:stretch}
+.demo-grid figure{border:2px solid var(--ink);background:var(--paper);padding:22px;display:flex;flex-direction:column;gap:14px}
+.demo-grid figcaption{display:flex;align-items:center;gap:10px;font:700 11px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;color:var(--soft)}
+.demo-grid figcaption svg{width:15px;height:15px}
+.demo-paper h4{font-family:'Fraunces';font-weight:600;font-size:1.25rem;line-height:1.25;max-width:26ch}
+.demo-paper .col{font-size:14px;color:var(--soft);max-width:48ch;text-align:justify;line-height:1.65}
+.demo-meta{margin-top:auto;font:600 12px/1 'Archivo';letter-spacing:.06em;color:var(--teal);border-top:1px solid var(--line);padding-top:12px}
+.phone{border:2px solid var(--ink);border-radius:26px;max-width:230px;width:100%;margin:0 auto;padding:16px 14px;aspect-ratio:9/15.5;display:flex;flex-direction:column;gap:12px;background:var(--paper)}
+.phone-top{font:600 12px/1 'Archivo';letter-spacing:.1em;text-transform:uppercase;color:var(--soft);border-bottom:1px solid var(--line);padding-bottom:10px}
+.phone-big{font-family:'Fraunces';font-style:italic;font-weight:600;font-size:1.55rem;line-height:1.15;margin:auto 0;color:var(--accent)}
+.phone-actions{display:flex;gap:16px;border-top:1px solid var(--line);padding-top:12px}
+.phone-actions span{display:flex;align-items:center;gap:6px;font:600 11px/1 'Archivo';color:var(--soft)}
+.phone-actions svg{width:15px;height:15px}
+.phone-meta{font:600 12px/1 'Archivo';letter-spacing:.06em;color:var(--accent)}
+.demo-quote{margin-top:22px;font-family:'Fraunces';font-style:italic;font-size:1.15rem;color:var(--soft);max-width:56ch}
+.demo-quote::before{content:"— "}
+
+/* ============ ARGENTINA §12 ============ */
+.arg-blocks{margin-top:36px}
+.arg-b{display:grid;grid-template-columns:70px 1fr;gap:20px;border-top:2px solid var(--ink);padding:26px 0 8px}
+.arg-b:nth-child(2){margin-left:5%}
+.arg-b:nth-child(3){margin-left:10%}
+.arg-n{font-family:'Fraunces';font-style:italic;font-weight:400;font-size:1.6rem;color:var(--soft)}
+.arg-b h3{font-size:1.4rem;margin-bottom:10px}
+.arg-b p{max-width:60ch;margin-bottom:14px;font-size:16px}
+.arg-b.good{border-top-color:var(--teal)}
+.arg-b.good .arg-n{color:var(--teal)}
+.arg-b.good h3{color:var(--teal)}
+
+/* ============ CTA FINAL §13 ============ */
+.final-cta{margin-top:52px;border:2px solid var(--ink);background:var(--paper2);padding:36px;display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:20px;box-shadow:9px 9px 0 rgba(28,23,16,.12)}
+.final-cta p{font-family:'Fraunces';font-style:italic;font-weight:500;font-size:clamp(1.3rem,2.6vw,1.8rem);max-width:22ch}
+.big-cta{display:inline-flex;align-items:center;gap:12px;font:700 15px/1 'Archivo';letter-spacing:.05em;background:var(--accent);color:var(--paper);text-decoration:none;padding:18px 26px;transition:.18s}
+.big-cta:hover{transform:translate(-3px,-3px);box-shadow:5px 5px 0 var(--ink)}
+.big-cta svg{width:18px;height:18px}
+
+/* ============ ACORDEÓN PENSADORES ============ */
+.thinkers{padding:100px 0 110px;border-top:1px solid var(--line)}
+.thinkers h2{font-size:clamp(2rem,4.2vw,3.2rem);margin:16px 0 10px}
+.thinkers .t-intro{color:var(--soft);max-width:56ch;margin-bottom:34px}
+.acc-item{border-top:1px solid var(--line)}
+.acc-item:last-child{border-bottom:1px solid var(--line)}
+.acc-head{width:100%;display:grid;grid-template-columns:52px 1fr auto 26px;align-items:center;gap:14px;background:none;border:0;padding:20px 4px;cursor:pointer;text-align:left;font-family:inherit;color:inherit;transition:.15s}
+.acc-head:hover{background:var(--paper2)}
+.acc-n{font-family:'Fraunces';font-style:italic;font-weight:400;color:var(--accent);font-size:1.1rem}
+.acc-name{font-family:'Fraunces';font-weight:600;font-size:1.3rem}
+.acc-years{font-style:normal;font-family:'Archivo';font-weight:400;font-size:12.5px;color:var(--soft);margin-left:8px}
+.acc-tag{font:700 10.5px/1.2 'Archivo';letter-spacing:.14em;text-transform:uppercase;color:var(--soft);border:1.5px solid var(--line);padding:6px 10px}
+.acc-head svg{width:18px;height:18px;transition:transform .3s;color:var(--soft)}
+.acc-item.open .acc-head svg{transform:rotate(180deg)}
+.acc-body{display:grid;grid-template-rows:0fr;transition:grid-template-rows .38s ease}
+.acc-item.open .acc-body{grid-template-rows:1fr}
+.acc-body > div{overflow:hidden}
+.acc-body p{max-width:62ch;padding:0 4px 6px 66px;font-size:15.5px}
+.acc-quote{font-family:'Fraunces';font-style:italic;color:var(--accent);padding-top:4px}
+.acc-link{display:inline-block;padding:6px 4px 24px 66px;font:700 12px/1 'Archivo';letter-spacing:.08em;text-transform:uppercase;text-decoration:none;color:var(--ink);border-bottom:2px solid transparent}
+.acc-link:hover{color:var(--accent)}
+
+/* ============ QUIZ ============ */
+.quiz{background:var(--night);color:var(--cream);padding:110px 0 120px;scroll-margin-top:62px}
+.quiz .kicker{color:var(--accentL)}
+.quiz .kicker::before{background:var(--accentL)}
+.quiz h2{font-size:clamp(2.4rem,5.5vw,4rem);font-style:italic;font-weight:500;margin:16px 0 8px}
+.quiz-sub{color:var(--cream-dim);max-width:58ch}
+.q-stage{margin-top:46px;animation:qin .4s both}
+@keyframes qin{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.q-top{display:flex;align-items:center;gap:18px;margin-bottom:22px}
+.q-count{font:700 11.5px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase;color:var(--cream-dim);white-space:nowrap}
+.q-track{flex:1;height:4px;background:rgba(243,237,221,.15)}
+.q-fill{height:100%;background:var(--accentL);transition:width .4s ease}
+.q-title{font-size:clamp(1.35rem,3vw,1.9rem);font-weight:500;max-width:28ch;margin-bottom:26px}
+.q-opts{display:grid;gap:12px}
+.q-opt{display:grid;grid-template-columns:46px 1fr;gap:16px;align-items:center;text-align:left;background:transparent;border:1.5px solid rgba(243,237,221,.3);color:var(--cream);padding:15px 18px;cursor:pointer;font-family:inherit;font-size:16px;line-height:1.55;transition:.18s}
+.q-opt:hover{border-color:var(--accentL);transform:translateX(6px)}
+.q-letter{font-family:'Fraunces';font-style:italic;font-weight:500;font-size:1.15rem;border:1.5px solid currentColor;width:38px;height:38px;display:grid;place-items:center}
+.q-opt.picked{background:var(--accentL);border-color:var(--accentL);transform:none}
+.q-opt.picked .q-letter{border-color:var(--cream)}
+.q-opt.locked{pointer-events:none;opacity:.55}
+.q-opt.picked.locked{opacity:1}
+.q-foot{display:flex;justify-content:space-between;align-items:center;margin-top:26px}
+.q-back{display:inline-flex;align-items:center;gap:8px;background:none;border:0;cursor:pointer;color:var(--cream-dim);font:700 12px/1 'Archivo';letter-spacing:.1em;text-transform:uppercase;padding:6px 0}
+.q-back:hover{color:var(--cream)}
+.q-back svg{width:15px;height:15px}
+.q-hint{font-size:12.5px;color:var(--cream-dim);font-style:italic}
+.q-start{display:inline-flex;align-items:center;gap:12px;margin-top:34px;background:var(--accentL);border:0;color:var(--night);font:800 15px/1 'Archivo';letter-spacing:.05em;padding:18px 28px;cursor:pointer;transition:.18s}
+.q-start:hover{transform:translate(-2px,-2px);box-shadow:5px 5px 0 var(--cream)}
+.q-start svg{width:17px;height:17px}
+.q-note{margin-top:18px;font-size:13.5px;color:var(--cream-dim)}
+.q-analyzing{margin-top:60px;text-align:center}
+.q-analyzing .q-track{height:6px;max-width:420px;margin:0 auto 24px}
+.q-status{font-family:'Fraunces';font-style:italic;font-size:1.25rem;color:var(--cream-dim)}
+/* resultado */
+.r-kicker{font:700 11.5px/1 'Archivo';letter-spacing:.24em;text-transform:uppercase;color:var(--accentL)}
+.r-name{font-style:italic;font-weight:500;font-size:clamp(2.4rem,6.5vw,4.4rem);margin:14px 0 4px}
+.r-role{font:600 14px/1.4 'Archivo';letter-spacing:.12em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:22px}
+.r-concept{display:inline-flex;flex-wrap:wrap;align-items:center;gap:10px;border:1.5px solid var(--accentL);padding:10px 16px;margin-bottom:28px;font-size:14.5px}
+.r-concept span{font:700 10.5px/1 'Archivo';letter-spacing:.18em;text-transform:uppercase;color:var(--accentL)}
+.r-tie{margin:-14px 0 26px;font-size:13px;color:var(--cream-dim);font-style:italic;max-width:62ch}
+.r-text p{max-width:60ch;margin-bottom:16px;color:var(--cream)}
+.r-take{border-left:4px solid var(--accentL);padding:6px 0 6px 20px;margin:26px 0 38px;max-width:56ch}
+.r-take span{display:block;font:700 10.5px/1 'Archivo';letter-spacing:.2em;text-transform:uppercase;color:var(--accentL);margin-bottom:8px}
+.r-take p{font-family:'Fraunces';font-style:italic;font-size:1.2rem;line-height:1.5}
+.r-mix{margin:0 0 34px;max-width:620px}
+.r-mix-title{font:700 11.5px/1 'Archivo';letter-spacing:.22em;text-transform:uppercase;color:var(--cream-dim);margin-bottom:16px}
+.mix-row{display:grid;grid-template-columns:170px 1fr 48px;gap:14px;align-items:center;padding:7px 0;border-top:1px solid rgba(243,237,221,.14)}
+.mix-name{font-size:13.5px;color:var(--cream-dim)}
+.mix-track{height:8px;background:rgba(243,237,221,.12)}
+.mix-fill{display:block;height:100%;width:0;background:rgba(243,237,221,.35);transition:width .9s cubic-bezier(.2,.8,.2,1)}
+.mix-row.win .mix-name{color:var(--cream);font-weight:700}
+.mix-row.win .mix-fill{background:var(--accentL)}
+.mix-pct{font:700 12.5px/1 'Archivo';color:var(--cream-dim);text-align:right}
+.mix-row.win .mix-pct{color:var(--accentL)}
+.r-actions{display:flex;gap:14px;flex-wrap:wrap}
+.r-btn{display:inline-flex;align-items:center;gap:10px;border:1.5px solid var(--cream);background:transparent;color:var(--cream);padding:13px 20px;font:700 13px/1 'Archivo';letter-spacing:.05em;cursor:pointer;transition:.18s;text-decoration:none}
+.r-btn:hover{background:var(--cream);color:var(--night)}
+.r-btn.primary{background:var(--accentL);border-color:var(--accentL);color:var(--night)}
+.r-btn.primary:hover{box-shadow:4px 4px 0 var(--cream)}
+.r-btn svg{width:15px;height:15px}
+.r-disclaimer{margin-top:26px;font-size:12.5px;color:var(--cream-dim);font-style:italic;max-width:52ch}
+
+/* ============ FOOTER / TOAST ============ */
+footer{padding:50px 0 60px;border-top:1px solid var(--line)}
+.foot-row{display:flex;flex-wrap:wrap;justify-content:space-between;gap:18px;align-items:baseline}
+.foot-row .f1{font-family:'Fraunces';font-style:italic;font-weight:500;font-size:1.2rem}
+.foot-row .f2{font-size:13px;color:var(--soft)}
+.foot-links{display:flex;gap:22px;margin-top:14px}
+.foot-links a{font:700 11px/1 'Archivo';letter-spacing:.16em;text-transform:uppercase;text-decoration:none;color:var(--soft)}
+.foot-links a:hover{color:var(--accent)}
+.toast{position:fixed;bottom:30px;left:50%;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:var(--ink);color:var(--paper);padding:14px 22px;display:flex;align-items:center;gap:10px;font:600 14px/1 'Archivo';z-index:1300;transition:.3s;box-shadow:6px 6px 0 rgba(188,58,27,.9)}
+.toast svg{width:16px;height:16px;color:var(--accentL)}
+.toast.show{opacity:1;transform:translate(-50%,0)}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:960px){
+  .toc-list{columns:1}
+  .sec-inner,.sec--flip .sec-inner{grid-template-columns:1fr;gap:10px}
+  .sec-num,.sec--flip .sec-num{font-size:3.2rem;order:0;text-align:left}
+  .note,.sec--flip .note{float:none;width:100%;margin:18px 0}
+  .demo-grid{grid-template-columns:1fr}
+  .arg-b{grid-template-columns:1fr}
+  .arg-b:nth-child(2),.arg-b:nth-child(3){margin-left:0}
+  .stamp{display:none}
+  .comp-switch{flex:1;justify-content:flex-start}
+  .comp-row{grid-template-columns:86px 1fr 1fr}
+  .comp-row > span{padding:11px 10px;font-size:13.5px}
+  .comp-symbol{grid-template-columns:1fr}
+  .dur-row{grid-template-columns:130px 1fr 64px;gap:6px 10px}
+  .dur-name{font-size:13px}
+  .dur-val{font-size:11.5px}
+  .dur-note{grid-column:1/-1}
+  .mix-row{grid-template-columns:120px 1fr 44px;gap:10px}
+  .mix-name{font-size:12px}
+}
+@media(max-width:620px){
+  .brand-text,.nav-cta{display:none}
+  .nav-links{gap:16px}
+  .nav-links a{font-size:11.5px}
+  .q-opt{grid-template-columns:1fr;gap:8px;padding:14px}
+  .q-letter{width:32px;height:32px}
+  .acc-head{grid-template-columns:34px 1fr 22px}
+  .acc-tag{display:none}
+  .acc-body p,.acc-link{padding-left:38px}
+  .r-actions .r-btn{width:100%;justify-content:center}
+  .comp-row{grid-template-columns:70px 1fr 1fr}
+  .comp-row > span{font-size:12.5px}
+}
+@media(prefers-reduced-motion:reduce){
+  *{animation:none!important;transition:none!important}
+  html{scroll-behavior:auto}
+}
+</style>
+</head>
+<body id="top">
+
+<div class="readbar" id="readbar"></div>
+
+<nav class="topnav">
+  <a class="brand" href="#top"><span class="brand-mark">S→L</span><span class="brand-text">La sociedad se volvió líquida</span></a>
+  <div class="nav-links">
+    <a href="#s1" data-nav data-for="s1,s2,s3,s4,s5,s6,s7,s8,s9,s10,s11,s12,s13">Exposición</a>
+    <a href="#pensadores" data-nav data-for="pensadores">Pensadores</a>
+    <a href="#encuesta" data-nav data-for="encuesta">La encuesta</a>
+  </div>
+  <a class="nav-cta" href="#encuesta">¿Qué pensador sos?</a>
+</nav>
+
+<!-- ==================== HERO ==================== -->
+<header class="hero">
+  <div class="wrap">
+    <p class="kicker">Exposición · Sociología del consumo</p>
+    <h1 class="hero-title">
+      <span class="hl hl-1">La sociedad</span>
+      <span class="hl hl-2"><span class="solid">Sólida</span></span>
+      <span class="hl hl-3">se volvió</span>
+      <span class="hl hl-4">líquida<span class="dot">.</span></span>
+    </h1>
+    <p class="hero-sub">Cómo pasamos de producir objetos que duraban décadas a consumir identidades que caducan por temporada — y qué dicen los siete pensadores que lo explicaron.</p>
+    <div class="hero-meta">
+      <span class="m">13 secciones</span><span class="sep"></span>
+      <span class="m">7 autores</span><span class="sep"></span>
+      <span class="m">14 preguntas</span>
+    </div>
+    <div class="hero-actions">
+      <a class="btn" href="#s1">Empezar la exposición <i data-lucide="arrow-right"></i></a>
+      <a class="btn ghost" href="#encuesta">Ir directo a la encuesta</a>
+    </div>
+  </div>
+  <svg class="stamp" viewBox="0 0 160 160" aria-hidden="true">
+    <defs><path id="circ" d="M80,80 m-58,0 a58,58 0 1,1 116,0 a58,58 0 1,1 -116,0"/></defs>
+    <text><textPath href="#circ">MODERNIDAD LÍQUIDA · SOCIEDAD DE CONSUMIDORES · </textPath></text>
+    <text class="star" x="80" y="102" text-anchor="middle">*</text>
+  </svg>
+  <a class="scroll-cue" href="#indice"><i data-lucide="move-down"></i> Deslizá para leer</a>
+</header>
+
+<!-- ==================== ÍNDICE ==================== -->
+<section class="toc" id="indice">
+  <div class="wrap">
+    <p class="kicker">Índice</p>
+    <h2 class="toc-title">Recorrido de la exposición</h2>
+    <ol class="toc-list">
+      <li><a href="#s1"><span class="toc-n">01</span><span class="toc-t">El gran pasaje</span><span class="toc-a">Bauman</span></a></li>
+      <li><a href="#s2"><span class="toc-n">02</span><span class="toc-t">Nada dura (casi) para siempre</span><span class="toc-a">Obsolescencia</span></a></li>
+      <li><a href="#s3"><span class="toc-n">03</span><span class="toc-t">Consumir para ser alguien</span><span class="toc-a">Bauman</span></a></li>
+      <li><a href="#s4"><span class="toc-n">04</span><span class="toc-t">Gastar para mostrar</span><span class="toc-a">Bataille</span></a></li>
+      <li><a href="#s5"><span class="toc-n">05</span><span class="toc-t">El algoritmo ya te conoce</span><span class="toc-a">Plataformas</span></a></li>
+      <li><a href="#s6"><span class="toc-n">06</span><span class="toc-t">Tus gustos no son (solo) tuyos</span><span class="toc-a">Bourdieu</span></a></li>
+      <li><a href="#s7"><span class="toc-n">07</span><span class="toc-t">La vida como vidriera</span><span class="toc-a">Marx</span></a></li>
+      <li><a href="#s8"><span class="toc-n">08</span><span class="toc-t">La fábrica de consenso</span><span class="toc-a">Frankfurt</span></a></li>
+      <li><a href="#s9"><span class="toc-n">09</span><span class="toc-t">El medio es el mensaje</span><span class="toc-a">McLuhan</span></a></li>
+      <li><a href="#s10"><span class="toc-n">10</span><span class="toc-t">Posverdad y burbujas</span><span class="toc-a">Desinformación</span></a></li>
+      <li><a href="#s11"><span class="toc-n">11</span><span class="toc-t">El ciudadano reemplazado</span><span class="toc-a">G. Canclini</span></a></li>
+      <li><a href="#s12"><span class="toc-n">12</span><span class="toc-t">Esto, en Argentina</span><span class="toc-a">La mirada local</span></a></li>
+      <li><a href="#s13"><span class="toc-n">13</span><span class="toc-t">Conclusión</span><span class="toc-a">Para cerrar</span></a></li>
+      <li class="hot"><a href="#pensadores"><span class="toc-n">+</span><span class="toc-t">Los siete pensadores — guía rápida</span></a></li>
+      <li class="hot"><a href="#encuesta"><span class="toc-n">?</span><span class="toc-t">La encuesta: ¿qué pensador sos?</span></a></li>
+    </ol>
+  </div>
+</section>
+
+<!-- ==================== 01 ==================== -->
+<section class="sec" id="s1">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">01</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Zygmunt Bauman · el gran pasaje</p>
+        <h2>De productores a consumidores</h2>
+        <p class="lead">Durante las últimas décadas el capitalismo se transformó de punta a punta. Zygmunt Bauman lo resumió en una imagen que se volvió famosa: la sociedad moderna dejó de ser sólida y se volvió líquida.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>En la <strong>modernidad sólida</strong> funcionaba la <strong>sociedad de productores</strong>: trabajo estable, bienes duraderos y proyectos pensados a largo plazo. Era el mundo del <strong>fordismo</strong> y el <strong>taylorismo</strong>: la fábrica como eje de la vida y la carrera laboral como horizonte.</p>
+        <p>En la <strong>modernidad líquida</strong> rige la <strong>sociedad de consumidores</strong>: flexibilidad laboral, incertidumbre, inmediatez e insatisfacción permanente, todo sostenido por un consumo constante. Es la lógica del <strong>toyotismo</strong>: producir justo lo que se demanda, siempre en movimiento.</p>
+        <aside class="note">
+          <p class="n-label"><i data-lucide="corner-down-right"></i> En tu día a día</p>
+          <p>Pensá en la charla de tus abuelos: «entré a los 18 años y me jubilé en la misma empresa». Hoy, cambiar de trabajo —y hasta de profesión— varias veces en la vida es lo esperable.</p>
+        </aside>
+      </div>
+      <div class="comparator reveal" id="comparator" data-mode="liquid">
+        <div class="comp-head">
+          <span class="comp-title">Dos épocas, cara a cara</span>
+          <div class="comp-switch">
+            <button class="comp-btn" data-mode-btn="solid">Modernidad sólida</button>
+            <button class="comp-btn is-active" data-mode-btn="liquid">Modernidad líquida</button>
+          </div>
+          <p class="comp-hint">Tocá una época para resaltar su columna.</p>
+        </div>
+        <div class="comp-row head"><span></span><span class="c-solid">≈ 1950 · productores</span><span class="c-liquid">Hoy · consumidores</span></div>
+        <div class="comp-row"><span class="r-label">Modelo</span><span class="c-solid">Fordismo / Taylorismo</span><span class="c-liquid">Toyotismo</span></div>
+        <div class="comp-row"><span class="r-label">Trabajo</span><span class="c-solid">Empleo estable, de larga duración</span><span class="c-liquid">Flexibilidad e incertidumbre</span></div>
+        <div class="comp-row"><span class="r-label">Tiempo</span><span class="c-solid">Proyectos a largo plazo</span><span class="c-liquid">Inmediatez, corto plazo</span></div>
+        <div class="comp-row"><span class="r-label">Objetos</span><span class="c-solid">Duraderos, reparables</span><span class="c-liquid">Descartables, «con vencimiento»</span></div>
+        <div class="comp-row"><span class="r-label">Deseo</span><span class="c-solid">Necesidades concretas</span><span class="c-liquid">Deseos fabricados · insatisfacción permanente</span></div>
+        <div class="comp-symbol">
+          <span class="sym-label">Objeto-símbolo</span>
+          <div>
+            <div class="sym solid">La heladera de los abuelos — 30 años de servicio.</div>
+            <div class="sym liquid">El celular — 2 años hasta el reemplazo.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 02 ==================== -->
+<section class="sec sec--flip" id="s2">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">02</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Obsolescencia programada</p>
+        <h2>Nada dura (casi) para siempre</h2>
+        <p class="lead">Las cosas ya no están hechas para acompañarte: están hechas para ser reemplazadas.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>Las heladeras, lamparitas, vajilla y electrodomésticos de la sociedad de productores estaban pensados para durar muchos años. Hoy, en cambio, la mayoría de los productos dura mucho menos debido a la <strong>obsolescencia programada</strong>: el diseño «vence» antes de que el objeto deje de funcionar.</p>
+        <p>El celular es el caso perfecto: antes una persona usaba el mismo dispositivo durante años; hoy aparecen constantemente nuevos modelos que incentivan el reemplazo. Bauman llamaría a esto la <strong>insatisfacción permanente</strong>, propia de nuestra época.</p>
+      </div>
+      <div class="dur reveal" id="dur-chart">
+        <div class="dur-head"><h3>¿Cuánto dura?</h3><span class="dur-hint">Tocá una barra para ver el detalle.</span></div>
+        <div class="dur-legend">
+          <span><span class="lg old"></span> Sociedad de productores</span>
+          <span><span class="lg new"></span> Sociedad de consumidores</span>
+        </div>
+        <button class="dur-row old" data-note="Pasaba de generación en generación. Se heredaba, se reparaba, se cuidaba: comprar vajilla nueva era casi un evento familiar.">
+          <span class="dur-name">Vajilla de la abuela</span>
+          <span class="dur-track"><span class="dur-bar" style="width:100%"></span></span>
+          <span class="dur-val">40+ años</span>
+          <span class="dur-note"><span><i data-lucide="corner-down-right"></i>Pasaba de generación en generación. Se heredaba, se reparaba, se cuidaba: comprar vajilla nueva era casi un evento familiar.</span></span>
+        </button>
+        <button class="dur-row old" data-note="Diseñada para durar: repuestos disponibles, servicio técnico, mantenimiento. Cuando se rompía, se arreglaba.">
+          <span class="dur-name">Heladera de los ’70</span>
+          <span class="dur-track"><span class="dur-bar" style="width:82%"></span></span>
+          <span class="dur-val">30 años</span>
+          <span class="dur-note"><span><i data-lucide="corner-down-right"></i>Diseñada para durar: repuestos disponibles, servicio técnico, mantenimiento. Cuando se rompía, se arreglaba.</span></span>
+        </button>
+        <button class="dur-row old" data-note="La misma tele acompañó a la familia entera durante más de una década. Cambiarla era una decisión de década, no de temporada.">
+          <span class="dur-name">Televisor de tubo</span>
+          <span class="dur-track"><span class="dur-bar" style="width:58%"></span></span>
+          <span class="dur-val">15+ años</span>
+          <span class="dur-note"><span><i data-lucide="corner-down-right"></i>La misma tele acompañó a la familia entera durante más de una década. Cambiarla era una decisión de década, no de temporada.</span></span>
+        </button>
+        <button class="dur-row new" data-note="Baterías selladas, memoria soldada, componentes no reemplazables: repararla cuesta casi lo mismo que reemplazarla.">
+          <span class="dur-name">Notebook actual</span>
+          <span class="dur-track"><span class="dur-bar" style="width:32%"></span></span>
+          <span class="dur-val">4–5 años</span>
+          <span class="dur-note"><span><i data-lucide="corner-down-right"></i>Baterías selladas, memoria soldada, componentes no reemplazables: repararla cuesta casi lo mismo que reemplazarla.</span></span>
+        </button>
+        <button class="dur-row new" data-note="Modelos nuevos cada año y actualizaciones que el hardware viejo no soporta: tu celular «envejece» por software, no por desgaste.">
+          <span class="dur-name">Celular</span>
+          <span class="dur-track"><span class="dur-bar" style="width:24%"></span></span>
+          <span class="dur-val">2–3 años</span>
+          <span class="dur-note"><span><i data-lucide="corner-down-right"></i>Modelos nuevos cada año y actualizaciones que el hardware viejo no soporta: tu celular «envejece» por software, no por desgaste.</span></span>
+        </button>
+        <button class="dur-row new" data-note="La «comunidad de guardarropa» en estado puro: nace, reúne a millones y se disuelve con el siguiente sonido de moda.">
+          <span class="dur-name">Tendencia viral</span>
+          <span class="dur-track"><span class="dur-bar" style="width:3.5%"></span></span>
+          <span class="dur-val">3 semanas</span>
+          <span class="dur-note"><span><i data-lucide="corner-down-right"></i>La «comunidad de guardarropa» en estado puro: nace, reúne a millones y se disuelve con el siguiente sonido de moda.</span></span>
+        </button>
+        <p class="dur-foot">Duraciones estimadas con fines comparativos · escala de barras comprimida.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 03 ==================== -->
+<section class="sec" id="s3">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">03</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Bauman · identidad y comunidad de guardarropa</p>
+        <h2>Consumir para ser alguien</h2>
+        <p class="lead">El consumo dejó de orientarse solo a satisfacer necesidades: pasó a ser una forma de construir identidad.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>Bauman sostiene que en la sociedad de consumo los individuos buscan <strong>pertenecer a determinados grupos a través de los bienes y servicios que consumen</strong>. Por eso el consumismo se alimenta de la creación permanente de nuevos deseos: no hay que cubrir lo que falta, hay que inventar lo que todavía no se quiere.</p>
+        <aside class="note">
+          <p class="n-label"><i data-lucide="corner-down-right"></i> El antes y el después</p>
+          <p>El club del barrio era para toda la vida. El fandom de un artista, una tendencia viral o un «aesthetic» dura lo que dura la temporada. Pertenecer hoy se parece más a cambiarse de vestuario que a echar raíces.</p>
+        </aside>
+        <p>Bauman llama <strong>comunidad de guardarropa</strong> a los grupos que se forman de manera rápida y temporaria alrededor de gustos, consumos o experiencias compartidas. A diferencia de las comunidades tradicionales, estos vínculos suelen desaparecer cuando cambia la moda o el interés común.</p>
+        <p>Hoy puede observarse en los seguidores de determinados artistas, influencers o tendencias virales, que encuentran en las redes un espacio de pertenencia construido principalmente a través del consumo cultural.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 04 ==================== -->
+<section class="sec sec--flip" id="s4">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">04</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Georges Bataille · gasto productivo e improductivo</p>
+        <h2>Gastar para mostrar</h2>
+        <p class="lead">Bataille distingue dos maneras de gastar: por necesidad… o por prestigio.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>Los <strong>gastos productivos</strong> son los destinados a satisfacer necesidades concretas: la alimentación, la vivienda o la salud. Los <strong>gastos improductivos</strong>, en cambio, responden principalmente a impulsos irracionales y a la búsqueda de prestigio o reconocimiento social.</p>
+        <p>En la sociedad de consumo predominan cada vez más los segundos: muchas personas adquieren ropa de marca, el último modelo de celular o accesorios tecnológicos no porque realmente los necesiten, sino porque representan un determinado <strong>estatus o identidad frente a los demás</strong>.</p>
+      </div>
+      <div class="game reveal" id="bataille-game">
+        <div class="game-head">
+          <h3>¿Gasto productivo o improductivo?</h3>
+          <p>Clasificá cada situación como lo haría Bataille. Tocá una opción.</p>
+        </div>
+        <div class="game-item" data-answer="prod" data-note="Alimentarse es una necesidad concreta: es la definición misma de gasto productivo.">
+          <p class="g-q">La compra de comida para toda la semana.</p>
+          <div class="g-btns"><button data-pick="prod">Productivo</button><button data-pick="improd">Improductivo</button></div>
+          <div class="g-note"></div>
+        </div>
+        <div class="game-item" data-answer="improd" data-note="Cubren la misma necesidad que cualquier zapatilla: lo que se compra aquí es prestigio y pertenencia. Gasto improductivo.">
+          <p class="g-q">Unas sneakers «edición limitada» que cuestan el triple que las comunes.</p>
+          <div class="g-btns"><button data-pick="prod">Productivo</button><button data-pick="improd">Improductivo</button></div>
+          <div class="g-note"></div>
+        </div>
+        <div class="game-item" data-answer="prod" data-note="La salud es una necesidad concreta: gasto productivo, sin dudas.">
+          <p class="g-q">Pagar un turno en el dentista.</p>
+          <div class="g-btns"><button data-pick="prod">Productivo</button><button data-pick="improd">Improductivo</button></div>
+          <div class="g-note"></div>
+        </div>
+        <div class="game-item" data-answer="improd" data-note="No responde a una necesidad: responde al deseo de estatus y a la insatisfacción permanente que la sociedad de consumo fabrica.">
+          <p class="g-q">El último modelo de celular… cuando el tuyo funciona perfecto.</p>
+          <div class="g-btns"><button data-pick="prod">Productivo</button><button data-pick="improd">Improductivo</button></div>
+          <div class="g-note"></div>
+        </div>
+        <button class="game-reset" type="button"><i data-lucide="rotate-ccw"></i> Reiniciar el juego</button>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 05 ==================== -->
+<section class="sec" id="s5">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">05</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Algoritmos y personalización</p>
+        <h2>El algoritmo ya te conoce</h2>
+        <p class="lead">Las redes profundizan esta dinámica con algoritmos que personalizan la experiencia de cada usuario.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>Plataformas como <strong>Spotify, Instagram, TikTok o YouTube</strong> usan algoritmos que personalizan la experiencia mediante secciones como «Para ti». Esto refleja el pasaje de una <strong>producción masiva y homogénea</strong> hacia una <strong>oferta cada vez más personalizada</strong>.</p>
+        <p>El antes y el después se ve clarísimo con la música: el reproductor <strong>MP3</strong> reproducía la música que el usuario había almacenado; en cambio, <strong>Spotify</strong> ofrece millones de canciones, analiza hábitos de consumo, genera listas personalizadas e incluye funciones como el <strong>Spotify Wrapped</strong>, que convierten nuestros consumos culturales en parte de nuestra identidad digital.</p>
+        <aside class="note">
+          <p class="n-label"><i data-lucide="corner-down-right"></i> Probalo ahora</p>
+          <p>Abrí tu Spotify y mirá tus cinco artistas más escuchados. ¿Los elegiste vos… o los fuiste encontrando en «Discover Weekly»?</p>
+        </aside>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 06 ==================== -->
+<section class="sec sec--flip" id="s6">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">06</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Pierre Bourdieu · habitus</p>
+        <h2>Tus gustos no son (solo) tuyos</h2>
+        <p class="lead">Nuestras preferencias no son completamente individuales ni naturales: están influenciadas por nuestro entorno social.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>El concepto de <strong>habitus</strong>, planteado por Bourdieu, sostiene que nuestros gustos están moldeados por la familia, el barrio y la escuela. Por eso los consumos culturales —incluidos los musicales— suelen variar según las características económicas, sociales y culturales de cada grupo.</p>
+        <p>Lo que escuchamos, vemos o compramos funciona muchas veces como <strong>distinción social</strong>: una forma de marcar posición. En este sentido, los algoritmos de plataformas como Spotify parecen ofrecernos elecciones puramente personalizadas, pero esas preferencias también están condicionadas por el contexto social en el que cada individuo se desarrolla.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 07 ==================== -->
+<section class="sec" id="s7">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">07</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Karl Marx · mercantilización y fetichismo</p>
+        <h2>La vida como vidriera</h2>
+        <p class="lead">Marx advirtió que el capitalismo convierte en mercancía cada vez más zonas de la vida social.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>Las relaciones humanas pasan a estar <strong>mediadas por mercancías</strong>: lo que compramos organiza lo que hacemos, con quiénes nos juntamos y cómo nos vemos. A ese proceso Marx lo llamó la <strong>mercantilización de la vida social</strong>.</p>
+        <aside class="note">
+          <p class="n-label"><i data-lucide="corner-down-right"></i> El fetiche, en una frase</p>
+          <p>Dos remeras idénticas, una con el logo cosido: la diferencia de precio no está en la tela — está en el fetiche.</p>
+        </aside>
+        <p>Su concepto de <strong>fetichismo de la mercancía</strong> describe la tendencia a atribuir a los objetos un valor que va más allá de su utilidad real. Actualmente, muchas personas compran determinados productos no por su función práctica, sino por el prestigio o el reconocimiento social asociado a determinadas marcas.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 08 ==================== -->
+<section class="sec sec--flip" id="s8">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">08</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Escuela de Frankfurt · industria cultural</p>
+        <h2>La fábrica de consenso</h2>
+        <p class="lead">Los medios masivos hacen su parte: reproducen los valores del sistema.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>La <strong>Escuela de Frankfurt</strong> consideró que los medios y la <strong>industria cultural</strong> contribuyen a reproducir los valores del sistema capitalista. A través de la publicidad, el entretenimiento y las noticias se promueven determinados estilos de vida y formas de consumo.</p>
+        <p>En este contexto puede mencionarse la teoría de la <strong>aguja hipodérmica</strong>, que planteaba que los medios transmitían mensajes capaces de influir directamente sobre una audiencia considerada pasiva y homogénea, «inyectando» ideas, valores y comportamientos. Hoy la teoría está cuestionada —las personas interpretan los mensajes de distintas maneras—, pero sigue siendo útil para comprender el enorme poder que ejercen la publicidad, los medios y los algoritmos al orientar muchas de nuestras decisiones de consumo.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 09 ==================== -->
+<section class="sec" id="s9">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">09</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Marshall McLuhan · forma y contenido</p>
+        <h2>El medio es el mensaje</h2>
+        <p class="lead">No importa solo qué se dice: importa a través de qué se dice.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>McLuhan sostenía que <strong>la forma en que se transmite la información influye en la manera en que interpretamos la realidad</strong>. Las redes sociales, por ejemplo, favorecen la circulación de contenidos <strong>breves, emotivos y simplificados</strong>: eso ya es un mensaje en sí mismo, antes de leer una sola palabra.</p>
+      </div>
+      <div class="media-demo reveal">
+        <p class="demo-cap">Misma información · dos medios</p>
+        <div class="demo-grid">
+          <figure class="demo-paper">
+            <figcaption><i data-lucide="newspaper"></i> El diario impreso</figcaption>
+            <h4>El 62% de los jóvenes comparte noticias sin verificar la fuente</h4>
+            <p class="col">Un informe sobre hábitos digitales analizó durante dos años cómo circula la información en redes sociales. Los resultados muestran patrones de comportamiento vinculados a la velocidad de publicación, la confianza en contactos cercanos y la escasa consulta de fuentes originales…</p>
+            <span class="demo-meta">Lectura completa: 8 minutos</span>
+          </figure>
+          <figure class="demo-phone">
+            <figcaption><i data-lucide="smartphone"></i> El video vertical</figcaption>
+            <div class="phone">
+              <div class="phone-top">Para ti</div>
+              <div class="phone-big">¡El 62% comparte<br>sin leer!</div>
+              <div class="phone-actions">
+                <span><i data-lucide="heart"></i> 12.431</span>
+                <span><i data-lucide="message-circle"></i> 3.208</span>
+                <span><i data-lucide="share-2"></i> 41.006</span>
+              </div>
+              <div class="phone-meta">Visto en 8 segundos</div>
+            </div>
+          </figure>
+        </div>
+        <p class="demo-quote">McLuhan diría: el formato ya te dijo qué pensar antes de que empieces a pensar.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 10 ==================== -->
+<section class="sec sec--flip" id="s10">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">10</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Posverdad · sesgo de confirmación · burbujas</p>
+        <h2>Cuando la emoción le gana al dato</h2>
+        <p class="lead">La posverdad se caracteriza por la predominancia de las emociones y las creencias personales sobre los hechos objetivos.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>Las personas tienden a consumir la información que confirma sus opiniones previas: ese fenómeno se conoce como <strong>sesgo de confirmación</strong>. Como consecuencia, se generan <strong>burbujas informativas</strong> —cámaras de eco donde solo entra lo que ya pensamos—, que dificultan el debate público y aumentan la polarización social.</p>
+        <p>Este contexto facilita la expansión de la <strong>posverdad</strong> y las <strong>fake news</strong>: la información compite por atención, y la emoción gana casi siempre.</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 11 ==================== -->
+<section class="sec" id="s11">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">11</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Néstor García Canclini · desciudadanización</p>
+        <h2>El ciudadano reemplazado</h2>
+        <p class="lead">La identidad se mudó de la política al carrito de compras.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>García Canclini plantea que la globalización produjo un proceso de <strong>desciudadanización</strong>: muchas personas dejaron de construir su identidad principalmente a través de la participación política o comunitaria para hacerlo mediante el consumo.</p>
+        <p>Así, <strong>el ciudadano va siendo reemplazado por el consumidor</strong> como figura central de la sociedad contemporánea. La pregunta ya no es «¿qué puedo hacer junto a otros?», sino «¿qué dice de mí esto que compro?».</p>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 12 ==================== -->
+<section class="sec sec--flip" id="s12">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">12</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">La mirada local</p>
+        <h2>Esto, en Argentina</h2>
+        <p class="lead">Estos cambios no son abstractos: se ven en la Argentina de todos los días.</p>
+      </div>
+      <div class="arg-blocks reveal">
+        <article class="arg-b">
+          <span class="arg-n">I.</span>
+          <div>
+            <h3>Elecciones dentro de la burbuja</h3>
+            <p>Las redes permiten acceder a una enorme cantidad de información y comunicar a personas de diferentes lugares. Pero también difunden noticias falsas y agudizan la polarización. En los períodos electorales, los algoritmos priorizan contenidos acordes con las preferencias de cada usuario, refuerzan el sesgo de confirmación y dificultan el intercambio de opiniones diferentes: el debate público termina apoyándose más en emociones que en información verificada.</p>
+          </div>
+        </article>
+        <article class="arg-b">
+          <span class="arg-n">II.</span>
+          <div>
+            <h3>La presión de aparecer</h3>
+            <p>La lógica del consumo permanente genera una fuerte presión social, especialmente entre los jóvenes: el valor de una persona parece medirse por los productos que posee, la cantidad de seguidores o la imagen que proyecta. Coincide con la idea de Bauman de que los individuos deben promocionarse constantemente para mantenerse visibles. En un contexto económico complejo como el argentino, esto se nota aún más: mucha gente sostiene consumos para sentirse incluida socialmente, aun cuando su situación no siempre lo permite.</p>
+          </div>
+        </article>
+        <article class="arg-b good">
+          <span class="arg-n">III.</span>
+          <div>
+            <h3>Lo que juega a favor</h3>
+            <p>No todo es alarmante: el acceso a plataformas digitales, servicios personalizados y nuevas formas de comunicación democratiza bienes culturales que antes estaban restringidos a sectores específicos. La condición es desarrollar una <strong>actitud crítica</strong> frente a los medios, la publicidad y los algoritmos, para evitar que nuestras decisiones queden completamente condicionadas por intereses comerciales.</p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== 13 ==================== -->
+<section class="sec" id="s13">
+  <div class="wrap"><div class="sec-inner">
+    <span class="sec-num" aria-hidden="true">13</span>
+    <div>
+      <div class="sec-head reveal">
+        <p class="kicker">Para cerrar</p>
+        <h2>El consumo ya no es solo economía</h2>
+        <p class="lead">El pasaje de la sociedad de productores a la sociedad de consumidores transformó profundamente la economía, la cultura y las relaciones sociales.</p>
+      </div>
+      <div class="sec-body reveal">
+        <p>Los aportes de <strong>Marx, Bauman, Bourdieu, Bataille, García Canclini, McLuhan y la Escuela de Frankfurt</strong> permiten comprender que el consumo ya no es solamente una actividad económica: también es una forma de construir identidades, organizar la vida social e interpretar la realidad.</p>
+        <p>Frente a estos cambios, resulta fundamental fortalecer el <strong>pensamiento crítico</strong> y recuperar espacios de participación ciudadana que permitan equilibrar el creciente poder del mercado, los medios y las plataformas digitales. Solo así será posible aprovechar las ventajas de los avances tecnológicos sin que el consumo, los algoritmos o la desinformación condicionen completamente nuestras decisiones y nuestra forma de participar en la vida democrática.</p>
+      </div>
+      <div class="final-cta reveal">
+        <p>¿Y vos, en qué pensador te convertiste?</p>
+        <a class="big-cta" href="#encuesta">Descubrí qué pensador sos <i data-lucide="arrow-down-right"></i></a>
+      </div>
+    </div>
+  </div></div>
+</section>
+
+<!-- ==================== GUÍA DE PENSADORES ==================== -->
+<section class="thinkers" id="pensadores">
+  <div class="wrap">
+    <p class="kicker reveal">Guía rápida</p>
+    <h2 class="reveal">Los siete pensadores</h2>
+    <p class="t-intro reveal">Un repaso de bolsillo antes de la encuesta. Desplegá cada uno para ver su idea central.</p>
+    <div class="acc reveal">
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-n">I</span><span class="acc-name">Karl Marx <em class="acc-years">1818–1883</em></span>
+          <span class="acc-tag">Fetichismo de la mercancía</span><i data-lucide="chevron-down"></i>
+        </button>
+        <div class="acc-body"><div>
+          <p>El capitalismo genera un proceso de mercantilización de la vida social: las relaciones humanas pasan a estar mediadas por mercancías. En el fetichismo, atribuimos a los objetos un valor que excede su utilidad real — el prestigio de una marca, por ejemplo.</p>
+          <p class="acc-quote">«Un teléfono no vale lo que su marca dice que vale.»</p>
+          <a class="acc-link" href="#s7">Ver en la exposición · §07</a>
+        </div></div>
+      </article>
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-n">II</span><span class="acc-name">Georges Bataille <em class="acc-years">1897–1962</em></span>
+          <span class="acc-tag">Gasto improductivo</span><i data-lucide="chevron-down"></i>
+        </button>
+        <div class="acc-body"><div>
+          <p>Distinguió los gastos productivos (necesidades concretas: comer, vivir, salud) de los improductivos, que responden a impulsos irracionales y a la búsqueda de prestigio. En la sociedad de consumo, ganan cada vez más terreno los segundos.</p>
+          <p class="acc-quote">«A veces compramos cosas para decir cosas.»</p>
+          <a class="acc-link" href="#s4">Ver en la exposición · §04</a>
+        </div></div>
+      </article>
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-n">III</span><span class="acc-name">Escuela de Frankfurt <em class="acc-years">siglo XX</em></span>
+          <span class="acc-tag">Industria cultural</span><i data-lucide="chevron-down"></i>
+        </button>
+        <div class="acc-body"><div>
+          <p>Adorno, Horkheimer y sus colegas denunciaron que los medios y la industria cultural reproducen los valores del sistema capitalista mediante la publicidad, el entretenimiento y las noticias. Relacionada con ellos, la «aguja hipodérmica» planteó medios que inyectan mensajes en audiencias pasivas.</p>
+          <p class="acc-quote">«¿Quién produce esto, y qué quiere de mí?»</p>
+          <a class="acc-link" href="#s8">Ver en la exposición · §08</a>
+        </div></div>
+      </article>
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-n">IV</span><span class="acc-name">Marshall McLuhan <em class="acc-years">1911–1980</em></span>
+          <span class="acc-tag">El medio es el mensaje</span><i data-lucide="chevron-down"></i>
+        </button>
+        <div class="acc-body"><div>
+          <p>La forma en que se transmite la información influye en cómo interpretamos la realidad. Las redes favorecen la circulación de contenidos breves, emotivos y simplificados: el formato ya comunica por sí mismo.</p>
+          <p class="acc-quote">«El formato ya habló antes que el contenido.»</p>
+          <a class="acc-link" href="#s9">Ver en la exposición · §09</a>
+        </div></div>
+      </article>
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-n">V</span><span class="acc-name">Pierre Bourdieu <em class="acc-years">1930–2002</em></span>
+          <span class="acc-tag">Habitus</span><i data-lucide="chevron-down"></i>
+        </button>
+        <div class="acc-body"><div>
+          <p>Nuestros gustos no son del todo individuales ni naturales: los moldea el entorno social. Lo que escuchamos, vemos y compramos funciona muchas veces como distinción social — una marca de posición en el mapa.</p>
+          <p class="acc-quote">«Nadie elige en el vacío.»</p>
+          <a class="acc-link" href="#s6">Ver en la exposición · §06</a>
+        </div></div>
+      </article>
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-n">VI</span><span class="acc-name">Zygmunt Bauman <em class="acc-years">1925–2017</em></span>
+          <span class="acc-tag">Modernidad líquida</span><i data-lucide="chevron-down"></i>
+        </button>
+        <div class="acc-body"><div>
+          <p>Del mundo sólido al líquido: de la sociedad de productores a la de consumidores, con flexibilidad, incertidumbre, inmediatez e insatisfacción permanente. Su «comunidad de guardarropa» describe pertenencias rápidas y temporarias alrededor del consumo.</p>
+          <p class="acc-quote">«Pertenecer, hoy, es cambiarse de vestuario.»</p>
+          <a class="acc-link" href="#s1">Ver en la exposición · §01</a>
+        </div></div>
+      </article>
+      <article class="acc-item">
+        <button class="acc-head" aria-expanded="false">
+          <span class="acc-n">VII</span><span class="acc-name">Néstor García Canclini <em class="acc-years">1939</em></span>
+          <span class="acc-tag">Desciudadanización</span><i data-lucide="chevron-down"></i>
+        </button>
+        <div class="acc-body"><div>
+          <p>La globalización hizo que muchas personas construyan su identidad más por el consumo que por la participación política o comunitaria: el consumidor va reemplazando al ciudadano como figura central de la sociedad contemporánea.</p>
+          <p class="acc-quote">«Ser alguien, también, es participar.»</p>
+          <a class="acc-link" href="#s11">Ver en la exposición · §11</a>
+        </div></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ==================== ENCUESTA ==================== -->
+<section class="quiz" id="encuesta">
+  <div class="wrap">
+    <p class="kicker">Encuesta · 14 preguntas</p>
+    <h2>¿Qué pensador sos?</h2>
+    <p class="quiz-sub">Catorce situaciones de la vida diaria. Cada respuesta refleja una manera de ver el mundo: la de uno de los siete autores de la exposición. Respondé con lo que realmente harías y al final te digo qué pensador razona más parecido a vos.</p>
+    <div id="quiz-root"></div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="foot-row">
+      <span class="f1">La sociedad se volvió líquida.</span>
+      <span class="f2">Exposición para el aula · Sociología del consumo</span>
+    </div>
+    <div class="foot-links">
+      <a href="#s1">Volver al inicio</a>
+      <a href="#pensadores">Los siete pensadores</a>
+      <a href="#encuesta">Repetir la encuesta</a>
+    </div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"><i data-lucide="check"></i><span id="toast-msg">Copiado</span></div>
+
+<script src="https://unpkg.com/lucide@latest"></script>
+<script>
+/* ============ utilidades ============ */
+function refreshIcons(){ try{ lucide.createIcons(); }catch(e){} }
+refreshIcons();
+
+const toast = document.getElementById('toast');
+let toastT;
+function showToast(msg){
+  document.getElementById('toast-msg').textContent = msg;
+  toast.classList.add('show');
+  clearTimeout(toastT);
+  toastT = setTimeout(()=>toast.classList.remove('show'), 2600);
+}
+
+/* ============ barra de lectura + reveals + nav activo ============ */
+const readbar = document.getElementById('readbar');
+addEventListener('scroll', ()=>{
+  const h = document.documentElement;
+  const p = h.scrollTop / (h.scrollHeight - h.clientHeight || 1);
+  readbar.style.transform = `scaleX(${p})`;
+}, {passive:true});
+
+const io = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+}), {threshold:.1});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+const navLinks = [...document.querySelectorAll('[data-nav]')];
+const ioNav = new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    navLinks.forEach(a=>{
+      const ids = (a.dataset.for||'').split(',');
+      a.classList.toggle('active', ids.includes(e.target.id));
+    });
+  }
+}), {rootMargin:'-35% 0px -55% 0px'});
+document.querySelectorAll('section[id]').forEach(s=>ioNav.observe(s));
+
+/* ============ comparador §01 ============ */
+const comp = document.getElementById('comparator');
+comp.querySelectorAll('[data-mode-btn]').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    comp.dataset.mode = btn.dataset.modeBtn;
+    comp.querySelectorAll('.comp-btn').forEach(b=>b.classList.toggle('is-active', b===btn));
+  });
+});
+
+/* ============ gráfico de durabilidad §02 ============ */
+document.querySelectorAll('#dur-chart .dur-row').forEach(row=>{
+  row.addEventListener('click', ()=>{
+    const wasOpen = row.classList.contains('open');
+    document.querySelectorAll('#dur-chart .dur-row').forEach(r=>r.classList.remove('open'));
+    if(!wasOpen) row.classList.add('open');
+  });
+});
+
+/* ============ juego de Bataille §04 ============ */
+const game = document.getElementById('bataille-game');
+function bindGame(){
+  game.querySelectorAll('.game-item').forEach(item=>{
+    const ans = item.dataset.answer, note = item.dataset.note;
+    item.querySelectorAll('.g-btns button').forEach(b=>{
+      b.addEventListener('click', ()=>{
+        if(item.classList.contains('done')) return;
+        const pick = b.dataset.pick;
+        const right = pick === ans;
+        item.classList.add('done', right ? 'right' : 'wrong');
+        b.classList.add('picked');
+        if(!right) item.querySelector(`[data-pick="${ans}"]`).classList.add('was-right');
+        item.querySelector('.g-note').innerHTML =
+          `<i data-lucide="${right?'check':'x'}"></i><span><strong>${right?'Correcto.':(ans==='prod'?'En realidad, era productivo.':'En realidad, era improductivo.')}</strong> ${note}</span>`;
+        refreshIcons();
+      });
+    });
+  });
+}
+bindGame();
+game.querySelector('.game-reset').addEventListener('click', ()=>{
+  game.querySelectorAll('.game-item').forEach(item=>{
+    item.classList.remove('done','right','wrong');
+    item.querySelectorAll('button').forEach(b=>b.classList.remove('picked','was-right'));
+    item.querySelector('.g-note').innerHTML = '';
+  });
+});
+
+/* ============ acordeón pensadores ============ */
+document.querySelectorAll('.acc-item').forEach(item=>{
+  item.querySelector('.acc-head').addEventListener('click', ()=>{
+    const open = item.classList.toggle('open');
+    item.querySelector('.acc-head').setAttribute('aria-expanded', open);
+  });
+});
+
+/* ================================================== */
+/* ================== LA ENCUESTA =================== */
+/* ============ 14 preguntas · cada opción encarna la forma de pensar de un autor ============ */
+const QUESTIONS = [
+  { q:"Ves un producto carísimo que te encanta. ¿Qué pensás primero?",
+    opts:[
+      ["Me encanta, pero sé que en seis meses voy a querer el que venga después.","bauman"],
+      ["¿Quién lo fabricó, en qué condiciones y cuánta ganancia queda en el medio?","marx"],
+      ["Con eso me verían distinto: vale por lo que muestra, no por lo que hace.","bataille"],
+      ["¿Por qué justo a mí me encanta esto? ¿De dónde viene ese gusto?","bourdieu"]
+    ]},
+  { q:"Un video corto y emotivo se viraliza y confirma lo que pensás. ¿Qué hacés?",
+    opts:[
+      ["Me pregunto quién lo produjo y qué gana con que yo lo comparta.","frankfurt"],
+      ["Verifico el dato en la fuente original antes de creer cualquier versión.","marx"],
+      ["Primero noto que fue el formato —corto, vertical, emotivo— lo que me llegó.","mcluhan"],
+      ["Prefiero discutirlo con alguien en persona antes que sumar un clic más.","canclini"]
+    ]},
+  { q:"¿De dónde vienen tus gustos musicales, según vos?",
+    opts:[
+      ["De mi casa, mi barrio y mi escuela: no se eligen en el vacío.","bourdieu"],
+      ["Se renuevan solos: lo que escuchaba el año pasado ya no me representa.","bauman"],
+      ["Cambió el medio y cambió mi escucha: del CD propio a la playlist infinita.","mcluhan"],
+      ["De lo que quiero proyectar: la música que elijo también funciona como vitrina.","bataille"]
+    ]},
+  { q:"Un influencer recomienda un producto como «imprescindible». Tu primera reacción:",
+    opts:[
+      ["Recomendaciones en lugar de debate: consumimos opiniones en vez de formarnos la propia.","canclini"],
+      ["Imprescindible para verse: nadie impresiona con lo que simplemente funciona.","bataille"],
+      ["La industria cultural fabricando deseos, una vez más.","frankfurt"],
+      ["Imprescindible para su comisión: vende la ilusión más que el objeto.","marx"]
+    ]},
+  { q:"¿Cómo son tus grupos: amistades, fandoms, equipos?",
+    opts:[
+      ["De guardarropa: se arman rápido alrededor de una moda y se renuevan.","bauman"],
+      ["Viven en el chat: el grupo de WhatsApp es hoy el verdadero «lugar».","mcluhan"],
+      ["Estables: compartimos origen, códigos y humor desde hace años.","bourdieu"],
+      ["Me fijo que no se vuelvan una cámara de eco donde solo entra lo que ya pensamos.","frankfurt"]
+    ]},
+  { q:"Si tuvieras que presentarte sin mencionar nada de lo que consumís (música, marcas, series)…",
+    opts:[
+      ["Contaría mi trabajo y lo que sé hacer con mis manos.","marx"],
+      ["Contaría de dónde vengo: eso explica gran parte de quién soy.","bourdieu"],
+      ["Contaría en qué participo: el club, el centro de estudiantes, el barrio.","canclini"],
+      ["Igual se me notaría: lo que uno muestra siempre habla por uno.","bataille"]
+    ]},
+  { q:"Sale «el último modelo» de algo que compraste hace un año y funciona perfecto.",
+    opts:[
+      ["Obsolescencia programada por marketing: fabrican la urgencia de reemplazar.","frankfurt"],
+      ["Me inquieta que «tener el último modelo» compita con salir a hacer cosas con otros.","canclini"],
+      ["Ya me siento raro con el viejo: lo siento vencido, aunque funcione.","bauman"],
+      ["Me llama más el lanzamiento que el producto: el espectáculo ya vendió la novedad.","mcluhan"]
+    ]},
+  { q:"¿Qué es «gastar bien» la plata, para vos?",
+    opts:[
+      ["Depende del mundo al que pertenecés: cada grupo tiene su propia lógica del gasto.","bourdieu"],
+      ["Gastar en lo que hoy vale la pena, aunque no dure.","bauman"],
+      ["Cubrir necesidades concretas: comida, salud, herramientas.","marx"],
+      ["A veces, gastar de más también revela: lo que se exhibe construye posición.","bataille"]
+    ]},
+  { q:"Las noticias que te llegan al feed, ¿cómo las tomás?",
+    opts:[
+      ["Prefiero las que me invitan a hacer algo, no solo a consumir indignación.","canclini"],
+      ["Sabiendo que el formato ya eligió por mí qué es «noticia» y qué no.","mcluhan"],
+      ["Busco la fuente original: muchas veces es interés disfrazado de información.","marx"],
+      ["Con distancia: preguntando quién financia ese medio y qué estilo de vida promueve.","frankfurt"]
+    ]},
+  { q:"Ponés música en una juntada. ¿Cómo elegís qué poner?",
+    opts:[
+      ["Ni elijo: la app ya sabe qué poner — y a veces mejor que yo.","mcluhan"],
+      ["Algo que impresione: la música también arma la escena y marca nivel.","bataille"],
+      ["Lo de siempre: los gustos del grupo vienen de lejos y no se discuten.","bourdieu"],
+      ["Lo que está sonando ahora: la playlist de la temporada.","bauman"]
+    ]},
+  { q:"¿Qué te incomoda más del mundo actual?",
+    opts:[
+      ["Que se mida todo por lo útil: el gasto que «sobró» siempre dijo la verdad de una época.","bataille"],
+      ["Que el entretenimiento fabrique consenso mejor que cualquier debate.","frankfurt"],
+      ["Que las cosas valgan por su marca y no por el trabajo que llevan dentro.","marx"],
+      ["Que seamos consumidores antes que ciudadanos: el carrito antes que el voto.","canclini"]
+    ]},
+  { q:"Cambiás de opinión sobre un tema polémico. ¿Qué te movió?",
+    opts:[
+      ["A veces fue el video que lo explicaba: me convenció la forma antes que el contenido.","mcluhan"],
+      ["Casi no cambia: pienso bastante parecido a la gente de mi entorno.","bourdieu"],
+      ["Cambió la evidencia: revisé fuentes y actualicé — no me movió un video con música épica.","frankfurt"],
+      ["El mundo cambia y mis convicciones se renuevan con él: son de usar y reciclar.","bauman"]
+    ]},
+  { q:"¿Cuál de estas frases te representa más?",
+    opts:[
+      ["«Lo que gasto de más es, en parte, lo que soy frente a los demás.»","bataille"],
+      ["«Mis gustos hablan de mi historia más de lo que yo creo.»","bourdieu"],
+      ["«Prefiero participar en algo antes que tener algo.»","canclini"],
+      ["«Detrás de cada objeto hay una relación de trabajo que casi nunca se ve.»","marx"]
+    ]},
+  { q:"Si pudieras cambiar una sola cosa de esta sociedad…",
+    opts:[
+      ["Que participar valga tanto como consumir.","canclini"],
+      ["Que la cultura no sea una fábrica de entretenimiento en serie.","frankfurt"],
+      ["Que no se descarte tan rápido a las personas como se descartan los objetos.","bauman"],
+      ["Que entendiéramos que cada nueva tecnología nos cambia antes de que la usemos.","mcluhan"]
+    ]}
+];
+
+const THINKERS = {
+  bauman:{ name:"Zygmunt Bauman", role:"El cronista de lo líquido",
+    concept:"Modernidad líquida · sociedad de consumidores", sec:"#s1",
+    text1:"Razonás con la fluidez de Bauman: para vos la identidad no es un monumento sino una corriente. Lo nuevo tira más que lo duradero, las pertenencias se renuevan por temporada y la insatisfacción permanente es casi un clima, no un accidente.",
+    text2:"Bauman describió ese mundo con precisión: el consumo ya no responde a necesidades, fabrica deseos que caducan a propósito. Vos conocés esa mecánica desde adentro — y como él, también podés nombrarla.",
+    take:"Antes de cada compra, preguntate: ¿esto cubre una necesidad o fabrica una identidad con fecha de vencimiento?" },
+  bourdieu:{ name:"Pierre Bourdieu", role:"El detective del gusto",
+    concept:"Habitus", sec:"#s6",
+    text1:"Razonás como Bourdieu: antes de aceptar un gusto como «propio», preguntás de dónde viene. Sabés que la familia, el barrio y la escuela moldearon tus preferencias mucho antes de que empezaras a «elegir».",
+    text2:"Y a la vez, esos gustos funcionan como distinción social: marcan tu lugar en el mapa. Lo que escuchás, vestís y comprás no es solo individual: es la huella de tu mundo — eso es habitus.",
+    take:"La próxima vez que digas «esto no es lo mío», preguntate quién te lo enseñó." },
+  marx:{ name:"Karl Marx", role:"El crítico del fetiche",
+    concept:"Fetichismo de la mercancía", sec:"#s7",
+    text1:"Razonás como Marx: ante cualquier objeto, buscás la relación social escondida detrás. ¿Quién lo fabricó? ¿En qué condiciones? ¿Por qué «vale» lo que vale? Son preguntas que casi nadie hace — y vos las hacés primero.",
+    text2:"Marx advirtió que el capitalismo mercantiliza la vida social y que el fetichismo nos hace atribuir a las cosas un valor mágico que excede su utilidad. Vos desactivás esa magia con una pregunta simple.",
+    take:"Un objeto vale lo que resuelve. El resto es la historia que le pegaron con publicidad." },
+  bataille:{ name:"Georges Bataille", role:"El economista del derroche",
+    concept:"Gasto improductivo", sec:"#s4",
+    text1:"Razonás como Bataille: entendés que el gasto también es comunicación, competencia y prestigio. Lo que «sobró», lo que se exhibe, lo que no era necesario — eso también define quién es cada uno frente a los demás.",
+    text2:"Bataille llamó gasto improductivo a gastar no por necesidad concreta sino por prestigio y reconocimiento. Es una conducta antiquísima — el lujo, el trofeo — y la sociedad de consumo la convirtió en su motor.",
+    take:"Distinguir gasto productivo de improductivo no es moralinar: es saber cuándo comprás un objeto y cuándo comprás una imagen." },
+  mcluhan:{ name:"Marshall McLuhan", role:"El mensajero",
+    concept:"El medio es el mensaje", sec:"#s9",
+    text1:"Razonás como McLuhan: cuando todos miran el contenido, vos mirás el continente. El scroll, el video vertical, la playlist infinita: para vos no son neutros — el formato ya comunicó antes de que empieces a leer o escuchar.",
+    text2:"McLuhan sostenía que el medio moldea nuestra forma de percibir y de pensar. Vivís intensamente esa diferencia, y tu forma de detectarla es, literalmente, pensar como McLuhan.",
+    take:"Antes de compartir algo, mirá el formato que lo trajo: ¿qué te hizo sentir, y por qué justo así?" },
+  frankfurt:{ name:"Escuela de Frankfurt", role:"Los guardianes de la industria cultural",
+    concept:"Industria cultural", sec:"#s8",
+    text1:"Razonás como la Escuela de Frankfurt: tu primer movimiento ante un mensaje es la sospecha activa. ¿Quién lo produce? ¿Qué gana? ¿Qué estilo de vida me está vendiendo como si fuera natural?",
+    text2:"Adorno y Horkheimer denunciaron que la industria cultural reproduce los valores del sistema a través de la publicidad, el entretenimiento y las noticias. Tu distancia crítica es exactamente el antídoto que ellos proponían.",
+    take:"Preguntar «¿quién produce esto y qué quiere de mí?» es salud mental informacional." },
+  canclini:{ name:"Néstor García Canclini", role:"El defensor del ciudadano",
+    concept:"Desciudadanización", sec:"#s11",
+    text1:"Razonás como García Canclini: te negás a que el consumo reemplace a la participación. Para vos, ser alguien todavía pasa por hacer cosas con otros — el club, el centro de estudiantes, el barrio — y no solo por lo que se puede comprar o mostrar.",
+    text2:"Canclini llamó desciudadanización al proceso por el cual el consumidor va reemplazando al ciudadano como figura central de la sociedad. Tus respuestas muestran a alguien que defiende el lado que se está perdiendo.",
+    take:"Votar, discutir, organizarse: también construyen identidad. Quizás las únicas que no vencen." }
+};
+const ORDER = ["bauman","bourdieu","marx","bataille","mcluhan","frankfurt","canclini"];
+const PHRASES = [
+  "Ponderando la insatisfacción permanente…",
+  "Cruzando tu habitus…",
+  "Pesando el fetichismo…",
+  "Auditando el gasto improductivo…",
+  "Rastreando tus burbujas informativas…",
+  "Desempatando afinidades…"
+];
+
+const root = document.getElementById('quiz-root');
+let answers = [];
+
+function renderIntro(){
+  root.innerHTML = `
+    <div class="q-stage">
+      <p class="q-note" style="font-size:15px;max-width:56ch">No hay respuestas correctas: hay formas de ver el mundo. Cada opción refleja la lógica de uno de los siete autores. Al final vas a ver tu resultado, tu «mix» completo de pensadores y —si hay empate— cómo se definió.</p>
+      <button class="q-start" id="q-go">Empezar la encuesta <i data-lucide="arrow-right"></i></button>
+    </div>`;
+  refreshIcons();
+  document.getElementById('q-go').addEventListener('click', ()=>{ answers = []; renderQuestion(0); });
+}
+
+function renderQuestion(i){
+  const q = QUESTIONS[i];
+  root.innerHTML = `
+    <div class="q-stage">
+      <div class="q-top">
+        <span class="q-count">Pregunta ${String(i+1).padStart(2,'0')} / ${String(QUESTIONS.length).padStart(2,'0')}</span>
+        <div class="q-track"><div class="q-fill" style="width:${(i/QUESTIONS.length)*100}%"></div></div>
+      </div>
+      <h3 class="q-title">${q.q}</h3>
+      <div class="q-opts">
+        ${q.opts.map((o,j)=>`
+          <button class="q-opt${answers[i]===j?' picked':''}" data-j="${j}">
+            <span class="q-letter">${'ABCD'[j]}</span><span>${o[0]}</span>
+          </button>`).join('')}
+      </div>
+      <div class="q-foot">
+        ${i>0 ? '<button class="q-back" id="q-back"><i data-lucide="arrow-left"></i> Volver</button>' : '<span></span>'}
+        <span class="q-hint">Elegí la opción que más te represente</span>
+      </div>
+    </div>`;
+  refreshIcons();
+  if(i>0) document.getElementById('q-back').addEventListener('click', ()=>renderQuestion(i-1));
+  root.querySelectorAll('.q-opt').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      const j = +btn.dataset.j;
+      answers[i] = j;
+      root.querySelectorAll('.q-opt').forEach(b=>b.classList.add('locked'));
+      btn.classList.add('picked');
+      setTimeout(()=>{
+        if(i+1 < QUESTIONS.length) renderQuestion(i+1);
+        else renderAnalyzing();
+      }, 340);
+    });
+  });
+}
+
+function renderAnalyzing(){
+  root.innerHTML = `
+    <div class="q-analyzing q-stage">
+      <div class="q-track"><div class="q-fill" id="an-fill"></div></div>
+      <p class="q-status" id="an-status">Analizando tus respuestas…</p>
+    </div>`;
+  requestAnimationFrame(()=>{ const f=document.getElementById('an-fill'); if(f) f.style.width='100%'; });
+  let k = 0;
+  const iv = setInterval(()=>{
+    const st = document.getElementById('an-status');
+    if(st) st.textContent = PHRASES[k++ % PHRASES.length];
+  }, 380);
+  setTimeout(()=>{ clearInterval(iv); renderResult(); }, 2100);
+}
+
+function computeScores(){
+  const sc = {}; ORDER.forEach(t=>sc[t]=0);
+  answers.forEach((a,i)=>{ sc[QUESTIONS[i].opts[a][1]]++; });
+  return sc;
+}
+
+function renderResult(){
+  const sc = computeScores();
+  const max = Math.max(...ORDER.map(t=>sc[t]));
+  const tied = ORDER.filter(t=>sc[t]===max);
+  let winner;
+  if(tied.length === 1){
+    winner = tied[0];
+  } else {
+    // desempate: gana la afinidad que apareció primero en tus respuestas
+    winner = tied[0];
+    for(let i=0;i<answers.length;i++){
+      const t = QUESTIONS[i].opts[answers[i]][1];
+      if(tied.includes(t)){ winner = t; break; }
+    }
+  }
+  const T = THINKERS[winner];
+  const ranked = [...ORDER].sort((a,b)=> sc[b]-sc[a] || ORDER.indexOf(a)-ORDER.indexOf(b));
+  const pct = t => Math.round(sc[t]/answers.length*100);
+  const tieNote = tied.length>1
+    ? `<p class="r-tie">Empate técnico entre ${tied.map(t=>THINKERS[t].name).join(' · ')}: ganó la afinidad que apareció primero en tus respuestas.</p>`
+    : '';
+
+  root.innerHTML = `
+    <div class="q-stage q-result">
+      <p class="r-kicker">Tu resultado</p>
+      <h3 class="r-name">${T.name}</h3>
+      <p class="r-role">${T.role}</p>
+      <p class="r-concept"><span>Concepto clave</span> ${T.concept}</p>
+      ${tieNote}
+      <div class="r-text"><p>${T.text1}</p><p>${T.text2}</p></div>
+      <div class="r-take"><span>Una idea para llevarte</span><p>${T.take}</p></div>
+      <div class="r-mix">
+        <p class="r-mix-title">Tu mix de pensadores</p>
+        ${ranked.map(t=>`
+          <div class="mix-row${t===winner?' win':''}">
+            <span class="mix-name">${THINKERS[t].name}</span>
+            <span class="mix-track"><span class="mix-fill" data-w="${pct(t)}"></span></span>
+            <span class="mix-pct">${pct(t)}%</span>
+          </div>`).join('')}
+      </div>
+      <div class="r-actions">
+        <button class="r-btn primary" id="r-copy"><i data-lucide="copy"></i> Copiar mi resultado</button>
+        <button class="r-btn" id="r-redo"><i data-lucide="rotate-ccw"></i> Volver a empezar</button>
+        <a class="r-btn" href="${T.sec}"><i data-lucide="book-open"></i> Ver su idea en la exposición</a>
+      </div>
+      <p class="r-disclaimer">Este test es un juego para repasar los conceptos de la exposición: ningún perfil es mejor que otro.</p>
+    </div>`;
+  refreshIcons();
+  setTimeout(()=>{
+    root.querySelectorAll('.mix-fill').forEach(f=>{ f.style.width = f.dataset.w + '%'; });
+  }, 80);
+
+  document.getElementById('r-redo').addEventListener('click', ()=>{ answers=[]; renderIntro(); });
+  document.getElementById('r-copy').addEventListener('click', ()=>{
+    const lines = [
+      `¿Qué pensador sos? — Mi resultado: ${T.name}`,
+      `${T.role} · ${T.concept}`,
+      `Afinidad: ${ranked.slice(0,3).map(t=>THINKERS[t].name+' '+pct(t)+'%').join(' · ')}`,
+      `— de la exposición «La sociedad se volvió líquida»`
+    ].join('\n');
+    const done = ()=>showToast('Resultado copiado al portapapeles');
+    if(navigator.clipboard && navigator.clipboard.writeText){
+      navigator.clipboard.writeText(lines).then(done).catch(()=>fallbackCopy(lines, done));
+    } else fallbackCopy(lines, done);
+  });
+}
+
+function fallbackCopy(text, done){
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); done(); }catch(e){ showToast('No se pudo copiar'); }
+  document.body.removeChild(ta);
+}
+
+renderIntro();
+</script>
+</body>
+</html>
